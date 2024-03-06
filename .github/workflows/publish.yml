@@ -10,6 +10,11 @@ jobs:
     permissions:
       contents: write
     steps:
-      - run: poetry config pypi-token.pypi "${{ secrets.PYPI_TOKEN }}"
-      - name: Publish package
-        run: poetry publish --build
+        - name: Checkout Repository 
+          uses: actions/checkout@v3
+      
+        - name: Publish Package
+          uses: Aswinr24/poetry-publish@v2
+          with:
+            token: ${{ secrets.PYPI_TOKEN }}
+            build: true
