@@ -10,8 +10,6 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Publish PyPi package
-        uses: code-specialist/pypi-poetry-publish@v1.2
-        with:
-          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_REGISTRY_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+      - run: poetry config pypi-token.pypi "${{ secrets.PYPI_TOKEN }}"
+      - name: Publish package
+        run: poetry publish --build
