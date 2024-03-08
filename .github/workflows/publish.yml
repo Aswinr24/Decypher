@@ -1,20 +1,41 @@
-name: Build and publish python package
+name: Upload Python Package
 
 on:
-  release:
-    types: [ published ]
+  push:
+    tags:
+    - '[0-9]+.[0-9]+.[0-9]'
 
 jobs:
-  publish-service-client-package:
+  deploy:
     runs-on: ubuntu-latest
+
     permissions:
-      contents: write
+      # This permission is required for trusted publishing.
+      id-token: write
+      contents: read
+
     steps:
-        - name: Checkout Repository 
-          uses: actions/checkout@v3
-      
-        - name: Publish Package
-          uses: Aswinr24/poetry-publish@v2
-          with:
-            token: ${{ secrets.PYPI_TOKEN }}
-            build: true
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: false
+
+      - name: Update version (kept at 0.0.0) in pyproject.toml and build
+        run: |
+          poetry version ${{ github.ref_name }}
+          poetry build
+
+      - name: Mint token
+        id: mint
+        uses: tschm/token-mint-action@v1.0.3
+
+      - name: Publish the package with poetry
+        run: |
+          poetry publish -u __token__ -p '${{ steps.mint.outputs.api-token }}'
