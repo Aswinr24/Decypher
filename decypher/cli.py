@@ -1,5 +1,4 @@
 import typer
-from importlib import metadata
 import math
 from rich import print
 import base64
