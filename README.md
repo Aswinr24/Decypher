@@ -1,5 +1,5 @@
-### Speedy Cipher Decryption / Encryption tool
+## Speedy Cipher Decryption / Encryption tool
 
-## Installation:
+### Installation:
 pip install decypher
 
