@@ -1,4 +1,12 @@
 # Decypher
+
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/decypher?color=green)
+[![PyPI version](https://img.shields.io/pypi/v/decypher.svg?color=yellow)](https://pypi.org/project/decypher/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
+
+
+
 A CLI for speedy Cipher Decryption/Encryption
 
 ![image](https://github.com/Aswinr24/Decypher/assets/135364633/fa60340a-d339-4846-b861-49b7082c205e)
