@@ -6,7 +6,7 @@ A CLI for speedy Cipher Decryption/Encryption
 ![image](https://github.com/Aswinr24/Decypher/assets/135364633/f08b6499-ff46-4f6f-b7d0-0093cb798049)
 
 
-### Installation:
+## Installation:
 #### Python:
 ```
 pip install decypher
@@ -21,7 +21,7 @@ Run the Container:
 docker run -it --rm decypher
 ```
 
-### Usage:
+## Usage:
 
 To see the list of available ciphers for encryption/decryption and options:
 ```
@@ -29,7 +29,7 @@ decypher --help
 ```
 To decrypt a Cipher:
 ```
-decypher 'Ciphername' 'Ciphertext' 'key(based on type of cipher)'
+decypher <Ciphername> <Ciphertext> <key(based on type of cipher)>
 ```
 To encrypt plaintext as a Cipher:
 ```
@@ -44,4 +44,27 @@ Using Docker:
 ```
 docker run -it --rm decypher <Ciphername> <CipherText/Plaintext> <key>
 ```
-Replace `<Ciphername>` with the name of the Cipher, `<Ciphertext/Plaintext>` with the Ciphertext or Plaintext to encrypt/decrypt and `<key>` with the key.
+Replace `<Ciphername>` with the name of the Cipher, `<Ciphertext/Plaintext>` with the Ciphertext or Plaintext to encrypt/decrypt and `<key>` with the key, use `--encrypt` flag at the end for Encryption.
+
+### Examples:
+
+Encrypt a message using the Caesar Cipher:
+```
+decypher ceaser <Plaintext> <Key> --encrypt
+```
+Decrypt a Rail-fence Cipher:
+```
+decypher rail-fence <CipherText> <Key>
+```
+Decrypt a Vignere Cipher(using docker):
+```
+docker run -it --rm decypher vignere <Ciphertext> <Key>
+```
+
+## Contributing
+
+Contributions are welcome! If you find any bugs or have suggestions for improvements, please open an issue or clone the repository and submit a pull request on GitHub.
+
+## License
+
+This project is licensed under the MIT License - see the [MIT License](LICENSE) file for details.
